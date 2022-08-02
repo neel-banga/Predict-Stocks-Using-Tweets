@@ -42,10 +42,40 @@ def search_tweet(search, acc):
     return return_df
 
 for company in companies:
+    company_score = 0
     for acc in accounts:
         unformattted_tweets_df = search_tweet(company, acc)
-        print(unformattted_tweets_df.head())
 
         # Here let's preform sentiment analysys and find our scores
+        try :
+            for tweet in unformattted_tweets_df['tweet']:
+                company_score += model.sentiment(tweet)-0.5
 
-        
+        except KeyError:
+            pass
+
+    company_value[company] = company_score
+
+# Now that we have all our company values. Let's check which ones are negitive, which are positive, etc.
+
+negitive = []
+neutral = []
+positive = []
+for company in company_value:
+    score = company_value[company].astype(float)
+
+    if score <= 0.1:
+        negitive.append(company)
+    elif score >= 0.1 and score <= 0.3:
+        neutral.append(company)
+    elif score > 0.3:
+        positive.append(company)
+
+
+# Create a getter for our main.py
+def get_values():
+    return negitive, neutral, positive
+
+    
+    
+    

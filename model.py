@@ -124,10 +124,10 @@ def train_model():
         epochs=15,
         callbacks=[cp_callback])
 
-
     # Now, let's save our model as an h5 file
-
     model.save('model.h5')
+
+
 
 # Let's load up our saved raw model
 model = tf.keras.models.load_model('model.h5')
