@@ -69,13 +69,17 @@ for company in company_value:
     elif score >= 0.1 and score <= 0.3:
         neutral.append(company)
     elif score > 0.3:
-        positive.append(company)
+        positive.append(company) 
 
+# Let's print this, but, let's have the values look quite nice
+print('\n ---- Do NOT Invest In These Companies ----')
+for negitive_company in negitive:
+    print(negitive_company.capitalize())
 
-# Create a getter for our main.py
-def get_values():
-    return negitive, neutral, positive
+print('\n ---- These Companies Are A Tossup ----')
+for neutral_company in neutral:
+    print(neutral_company.capitalize())
 
-    
-    
-    
+print('\n ---- Invest In These Companies ----')
+for positive_company in positive:
+    print(f'{positive_company.capitalize()} \n')
