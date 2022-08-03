@@ -82,4 +82,7 @@ for neutral_company in neutral:
 
 print('\n ---- Invest In These Companies ----')
 for positive_company in positive:
-    print(f'{positive_company.capitalize()} \n')
+    print(positive_company.capitalize())
+
+# Add a breather line of space
+print('\n')
