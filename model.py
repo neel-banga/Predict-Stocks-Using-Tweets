@@ -145,5 +145,6 @@ deployment_model.compile(
     loss=losses.BinaryCrossentropy(from_logits=False), optimizer="adam", metrics=['accuracy']
 )
 
+# Let's create a simple function that we can call from other files to predict the sentiment of our text
 def sentiment(text):
     return deployment_model.predict([text])
